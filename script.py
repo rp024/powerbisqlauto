@@ -5,7 +5,7 @@ import pyodbc as pdb
 conn = pdb.connect("dsn=TESTDSN;uid=rp;pwd=Sasyak@143Tej")
 cursor = conn.cursor()
 
-fp = open(r'Testcases.csv')
+fp = open(r'Inputsqlfile.csv')
 csv_f = csv.reader(fp)
 
 fp2 = open(r'TestResultssheet.csv', 'w', newline='')
