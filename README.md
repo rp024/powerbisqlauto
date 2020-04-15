@@ -1,15 +1,16 @@
 # powerbisqlauto
 PowerBI SQL automation
 
-Apporach:
+Python version - 3.7.4 
 
-1.	Create PBIX Reports for all the DAX functions or Use existing DAX functions
-Deepa: Best to use the existing or a simple dashboard with few functions
-2.	Trace SQL query generated for each DAX function – Both SC930 and PowerBI Trace file.
-Deepa: As we discussed, Just pick one simple generated SQL query for POC.
-3.	Prepare an input file with all the Queries traced.
-4.	Develop a python script to run input file against the database and export the SQL results 
-5.	Manually capture the Expected result from PBIX report for each of the DAX function in an excel
-6.	Compare the Step 4 results with step 5.
-7.	Develop a report with PASS or FAIL or Error Status.
+Pre-requisite:
+1.	Create PBIX Reports using DAX functions 
+2.	Trace SQL query generated for each DAX function using Both SC930 by comparing with PowerBI Trace file.
+
+Process:
+
+1.	Prepare an inputsqlfile with all the SQL queries traced from PowerBI PBIX Reports
+2.	Open the script.py file and update DSN for your database or supply ODBC database connections strings in the script 
+3.  Run script.py
+4.	Verify TestResultssheet
 
