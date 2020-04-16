@@ -1,8 +1,8 @@
 import csv
 import logging
 import pyodbc as pdb
-
-conn = pdb.connect("dsn=TESTDSN;uid=rp;pwd=Sasyak@143Tej")
+#create a DSN to avalanche and update connection string
+conn = pdb.connect("dsn=certqa;uid=<>;pwd=<>")
 cursor = conn.cursor()
 
 fp = open(r'Inputsqlfile.csv')
