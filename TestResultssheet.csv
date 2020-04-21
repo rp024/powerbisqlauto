@@ -1,6 +1,6 @@
-"DAX function","Generated SQL","Expected","Actual","Results"
-"ABSOLUTE","select sum(     float8(""C1"")               ) as ""C1""from (    select      abs(""num0"")   as ""C1""    from ""rp"".""calcs"") as ""ITBL""","73","73.00","FALSE"
-"DIVIDE","select sum(""C1"") as ""C1""
+DAX function,Generated SQL,Expected,Actual,Results
+ABSOLUTE,"select sum(     float8(""C1"")               ) as ""C1""from (    select      abs(""num0"")   as ""C1""    from ""dbuser"".""calcs"") as ""ITBL""",73,73,PASS
+DIVIDE,"select sum(""C1"") as ""C1""
 from 
 (
     select case
@@ -12,16 +12,16 @@ from
                 else      float8(""int1"")                /      float8(""int0"")               
             end)
         end as ""C1""
-    from ""rp"".""calcs""
-) as ""ITBL""","-4.55","-4.55","PASS"
-"FLOOR","select sum(     float8(""int0"")               ) as ""C1""
-from ""rp"".""calcs""","68","68.00","FALSE"
-"GCD","select max(""int0"") as ""C1""from ""rp"".""calcs""","11","11","PASS"
-"SQRT","select sum(""C1"") as ""C1""from (    select      sqrt(     float8(""int0"")               )   as ""C1""    from ""rp"".""calcs"") as ""ITBL""","26.34","26.34","PASS"
-"COMBIN","select max(""int1"") as ""C1""
-from ""rp"".""calcs""","3","3","PASS"
-"LCM","select max(""int3"") as ""C1""from ""rp"".""calcs""","18","18","PASS"
-"EXP","select sum(""C1"") as ""C1""
+    from ""dbuser"".""calcs""
+) as ""ITBL""",-4.55,-4.55,PASS
+FLOOR,"select sum(     float8(""int0"")               ) as ""C1""
+from ""dbuser"".""calcs""",68,68,PASS
+GCD,"select max(""int0"") as ""C1""from ""dbuser"".""calcs""",11,11,PASS
+SQRT,"select sum(""C1"") as ""C1""from (    select      sqrt(     float8(""int0"")               )   as ""C1""    from ""dbuser"".""calcs"") as ""ITBL""",26.34,26.34,PASS
+COMBIN,"select max(""int1"") as ""C1""
+from ""dbuser"".""calcs""",3,3,PASS
+LCM,"select max(""int3"") as ""C1""from ""dbuser"".""calcs""",18,18,PASS
+EXP,"select sum(""C1"") as ""C1""
 from 
 (
     select      exp((case
@@ -29,9 +29,9 @@ from
             then      float8(""int0"")               
             else  0.000 
         end))   as ""C1""
-    from ""rp"".""calcs""
-) as ""ITBL""","92,132.71","92132.71","FALSE"
-"SUMX","select sum(""C1"") as ""C1""
+    from ""dbuser"".""calcs""
+) as ""ITBL""","92,132.71",92132.71,FALSE
+SUMX,"select sum(""C1"") as ""C1""
 from 
 (
     select ""int3"",
@@ -40,19 +40,19 @@ from
             then      float8(""int3"")                +  5.0000 
             else  5.0000
         end as ""C1""
-    from ""rp"".""calcs""
+    from ""dbuser"".""calcs""
 ) as ""ITBL""
-","240","240.00","FALSE"
-"SUM","select sum(     float8(""int2"")               ) as ""C1""from ""rp"".""calcs""","-14","-14.00","FALSE"
-"TRUNC","select sum(     float8(""C1"")               ) as ""C1""
+",240,240,PASS
+SUM,"select sum(     float8(""int2"")               ) as ""C1""from ""dbuser"".""calcs""",-14,-14,PASS
+TRUNC,"select sum(     float8(""C1"")               ) as ""C1""
 from 
 (
     select  -14  as ""C1""
-    from ""rp"".""batters""
-) as ""ITBL""","-1165976","-1165976.00","FALSE"
-"ALLCROSSFILTER","select sum(     float8(""book_id"")               ) as ""C1""from ""rp"".""risk_table""","54622977014","54622977014.00","FALSE"
-"RELATED","select sum(     float8(""ab"")               ) as ""C1""from ""rp"".""batters""","1,22,63,059.00","12263059.00","FALSE"
-"VALUES","select      float8(count(distinct(""ab"")))                +      float8(max(""C1""))                as ""C1""
+    from ""dbuser"".""batters""
+) as ""ITBL""",-1165976,-1165976,PASS
+ALLCROSSFILTER,"select sum(     float8(""book_id"")               ) as ""C1""from ""dbuser"".""risk_table""",54622977014,54622977014,PASS
+RELATED,"select sum(     float8(""ab"")               ) as ""C1""from ""dbuser"".""batters""","1,22,63,059.00",12263059,FALSE
+VALUES,"select      float8(count(distinct(""ab"")))                +      float8(max(""C1""))                as ""C1""
 from 
 (
     select ""ab"",
@@ -61,14 +61,14 @@ from
             then  1 
             else  0 
         end as ""C1""
-    from ""rp"".""batters""
-) as ""ITBL""","694","694.00","FALSE"
-"ALLSELECTED","select sum(     float8(""measure"")               ) as ""C1""
-from ""rp"".""cob_date""","41","41.00","FALSE"
-"RELATEDTABLE","select sum(     float8(""games"")               ) as ""C1""from ""rp"".""batters""","42,79,701.00","4279701.00","FALSE"
-"ALLNOBLANKROW","select count( 1 ) as ""C1""
-from ""rp"".""cob_date""","41","41","PASS"
-"DISTINCT(COLUMN)","select      float8(count(distinct(""player"")))                +      float8(max(""C1""))                as ""C1""
+    from ""dbuser"".""batters""
+) as ""ITBL""",694,694,PASS
+ALLSELECTED,"select sum(     float8(""measure"")               ) as ""C1""
+from ""dbuser"".""cob_date""",41,41,PASS
+RELATEDTABLE,"select sum(     float8(""games"")               ) as ""C1""from ""dbuser"".""batters""","42,79,701.00",4279701,FALSE
+ALLNOBLANKROW,"select count( 1 ) as ""C1""
+from ""dbuser"".""cob_date""",41,41,PASS
+DISTINCT(COLUMN),"select      float8(count(distinct(""player"")))                +      float8(max(""C1""))                as ""C1""
 from 
 (
     select ""player"",
@@ -77,45 +77,45 @@ from
             then  1 
             else  0 
         end as ""C1""
-    from ""rp"".""batters""
-) as ""ITBL""","15243","15243.00","FALSE"
-"EARLIER","select sum(     float8(""bb"")               ) as ""C1""
+    from ""dbuser"".""batters""
+) as ""ITBL""",15243,15243,PASS
+EARLIER,"select sum(     float8(""bb"")               ) as ""C1""
 from 
 (
     select ""bb""
-    from ""rp"".""batters""
+    from ""dbuser"".""batters""
     where ""league"" in ( 'AL' ,  'NL',  'AA' ,  'UA' ,  'NA' ,  'FL' ,  'PL' )
-) as ""ITBL""","11,27,992.00","1127992.00","FALSE"
-"ALLEXCEPT","select sum(     float8(""cs"")               ) as ""C1""
-from ""rp"".""batters""
-","82,083.00","82083.00","FALSE"
-"FILTER","select count(""league"") as ""C1""
+) as ""ITBL""","11,27,992.00",1127992,FALSE
+ALLEXCEPT,"select sum(     float8(""cs"")               ) as ""C1""
+from ""dbuser"".""batters""
+","82,083.00",82083,FALSE
+FILTER,"select count(""league"") as ""C1""
 from 
 (
     select ""league""
-    from ""rp"".""batters""
+    from ""dbuser"".""batters""
     where ""player"" =  'Aaron Boone' 
-) as ""ITBL""","6","6","PASS"
-"LEN","select sum(     float8(""C1"")               ) as ""C1""
+) as ""ITBL""",6,6,PASS
+LEN,"select sum(     float8(""C1"")               ) as ""C1""
 from 
 (
     select      length(""team"")   as ""C1""
-    from ""rp"".""batters""
-) as ""ITBL""","1380902","1380902.00","FALSE"
-"VALUE","select sum(     float8(""C1"")               ) as ""C1""from (    select  65 as ""C1""    from ""rp"".""batters"") as ""ITBL""","54,13,460.00","5413460.00","FALSE"
-"Search","select sum(     float8(""C1"")               ) as ""C1""
+    from ""dbuser"".""batters""
+) as ""ITBL""",1380902,1380902,PASS
+VALUE,"select sum(     float8(""C1"")               ) as ""C1""from (    select  65 as ""C1""    from ""dbuser"".""batters"") as ""ITBL""","54,13,460.00",5413460,FALSE
+Search,"select sum(     float8(""C1"")               ) as ""C1""
 from 
 (
     select  4  as ""C1""
-    from ""rp"".""batters""
-) as ""ITBL""","333136","333136.00","FALSE"
-"Two columns in results","select sum(     float8(""bb"")               ) as ""C1"",    sum(     float8(""ab"")               ) as ""C2""from (    select ""ab"",        ""bb""    from ""rp"".""batters""    where ""league"" =  'AA' ) as ""ITBL""","","26346.00","ERROR"
-"Right","select top 501
+    from ""dbuser"".""batters""
+) as ""ITBL""",333136,333136,PASS
+Two columns in results,"select sum(     float8(""bb"")               ) as ""C1"",    sum(     float8(""ab"")               ) as ""C2""from (    select ""ab"",        ""bb""    from ""dbuser"".""batters""    where ""league"" =  'AA' ) as ""ITBL""",,26346,ERROR
+Right,"select top 501
     ""C1""
 from 
 (
     select      right(""player"",  8 )   as ""C1""
-    from ""rp"".""batters""
+    from ""dbuser"".""batters""
 ) as ""ITBL""
 group by ""C1""
 order by ""C1"""," Aberson
@@ -1118,8 +1118,8 @@ order by ""C1"""," Aberson
  Edelman
  Edmonds
  Edwards
- Eischen","PASS"
-"LOWER","select top 501
+ Eischen",PASS
+LOWER,"select top 501
     ""C2""
 from 
 (
@@ -1128,13 +1128,13 @@ from
     (
         select  lowercase(""player"")   as ""C1"",
                  left(""player"",  8 )   as ""C2""
-        from ""rp"".""batters""
+        from ""dbuser"".""batters""
     ) as ""ITBL""
     where ""C1"" =  'a.j. sager'
 ) as ""ITBL""
 group by ""C2""
-order by ""C2""","A.J. Sag","A.J. Sag","PASS"
-"LEFT","select top 501    ""C1""from (    select      left(""player"",  5 )   as ""C1""    from ""rp"".""batters"") as ""ITBL""group by ""C1""order by ""C1""","0
+order by ""C2""",A.J. Sag,A.J. Sag,PASS
+LEFT,"select top 501    ""C1""from (    select      left(""player"",  5 )   as ""C1""    from ""dbuser"".""batters"") as ""ITBL""group by ""C1""order by ""C1""","0
 A.J. 
 Aaron
 Ab Wr
@@ -2134,8 +2134,8 @@ Coake
 Cobe 
 Coco 
 Cody 
-Colby","PASS"
-"COMBINE VALUES","select top 501
+Colby",PASS
+COMBINE VALUES,"select top 501
       ""C1""
 from 
 (
@@ -2155,7 +2155,7 @@ from
             then ""team""
             else  '' 
         end))  )  )  )   as ""C1""
-    from ""rp"".""batters""
+    from ""dbuser"".""batters""
 ) as ""ITBL""
 group by ""player"",
     ""team"",
@@ -3161,17 +3161,17 @@ NL,Zack Wheat,Brooklyn Superbas
 NL,Zack Wheat,Brooklyn Robins
 NL,Zack Wheat,Brooklyn Dodgers
 NL,Zack Taylor,New York Giants
-NL,Zack Taylor,Chicago Cubs","PASS"
-"MAX","select max(""int0"") as ""C1""from ""rp"".""calcs""","11","11","PASS"
-"MIN","select min(""int0"") as ""C1""from ""rp"".""calcs""","1","1","PASS"
-"COUNT","select count(""key"") as ""C1""from ""rp"".""calcs""","17","17","PASS"
-"TAN","select sum(     decimal(""C1"")               ) as ""C1""
+NL,Zack Taylor,Chicago Cubs",PASS
+MAX,"select max(""int0"") as ""C1""from ""dbuser"".""calcs""",11,11,PASS
+MIN,"select min(""int0"") as ""C1""from ""dbuser"".""calcs""",1,1,PASS
+COUNT,"select count(""key"") as ""C1""from ""dbuser"".""calcs""",17,17,PASS
+TAN,"select sum(     decimal(""C1"")               ) as ""C1""
 from 
 (
     select  1.5574  as ""C1""
-    from ""rp"".""calcs""
-) as ""ITBL""","17","17","PASS"
-"Total stores","select top 101
+    from ""dbuser"".""calcs""
+) as ""ITBL""",17,17,PASS
+Total stores,"select top 101
     name
 from 
 (
@@ -3189,7 +3189,7 @@ from
             select opendate,
                 name,
                      year(opendate)   as C1
-            from rp.store
+            from dbuser.store
         ) as ITBL
     ) as ITBL
     where C2 =  'New Store'
@@ -3212,8 +3212,8 @@ Cincinnati 2 Fashions Direct
 Pasadena Lindseys
 Ft. Oglethorpe Lindseys
 Knoxville Lindseys
-Wilson Lindseys","PASS"
-"Current year sales by Store number name","select top 1000001
+Wilson Lindseys",PASS
+Current year sales by Store number name,"select top 1000001
     ""name"",
     sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
     sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""
@@ -3234,7 +3234,7 @@ from
             ""reportingperiodid"",
             ""sum_regular_sales_units"",
             ""sum_markdown_sales_units""
-        from ""rp"".""sales""
+        from ""dbuser"".""sales""
         where ""scenarioid"" =  1
     ) as ""OTBL""
     left outer join 
@@ -3252,15 +3252,15 @@ from
                 ""opendate"",
                 ""name"",
                      year(""opendate"")   as ""C1""
-            from ""rp"".""store""
+            from ""dbuser"".""store""
         ) as ""ITBL""
     ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
     where ""C2"" =  'New Store'
 ) as ""ITBL""
 group by ""name""","Winchester Fashions Direct
 Washington Fashions Direct","Winchester Fashions Direct
-Washington Fashions Direct","PASS"
-"Open Store Countby month and Chain","select top 1000001
+Washington Fashions Direct",PASS
+Open Store Countby month and Chain,"select top 1000001
     ""chain"",
     ""C4"",
     count(""opendate"") as ""C1""
@@ -3334,7 +3334,7 @@ from
                 ""chain"",
                      year(""opendate"")   as ""C1"",
                      month(""opendate"")   as ""C2""
-            from ""rp"".""store""
+            from ""dbuser"".""store""
         ) as ""ITBL""
     ) as ""ITBL""
     where ""C3"" =  'New Store'
@@ -3342,8 +3342,8 @@ from
 group by ""chain"",
     ""C4""","Fashions Direct
 Lindseys","Fashions Direct
-Lindseys","PASS"
-"Sales perSqft by Name","select top 1000001
+Lindseys",PASS
+Sales perSqft by Name,"select top 1000001
     ""name"",
     sum(     float8(""sellingareasize"")               ) as ""C1""
 from 
@@ -3366,7 +3366,7 @@ from
                 ""sellingareasize"",
                 ""name"",
                      year(""opendate"")   as ""C1""
-            from ""rp"".""store""
+            from ""dbuser"".""store""
         ) as ""ITBL""
     ) as ""ITBL""
     where ""C2"" =  'New Store'
@@ -3389,8 +3389,8 @@ Cincinnati 2 Fashions Direct
 Pasadena Lindseys
 Ft. Oglethorpe Lindseys
 Knoxville Lindseys
-Wilson Lindseys","PASS"
-"Sales by Product category","select top 1000001
+Wilson Lindseys",PASS
+Sales by Product category,"select top 1000001
     category,
     sum(     float8(sum_markdown_sales_dollars)               ) as C1,
     sum(     float8(sum_regular_sales_dollars)               ) as C2
@@ -3411,16 +3411,16 @@ from
             reportingperiodid,
             sum_regular_sales_units,
             sum_markdown_sales_units
-        from rp.sales
+        from dbuser.sales
         where scenarioid =  1 
     ) as OTBL
-    left outer join rp.item as ITBL on (OTBL.itemid = ITBL.itemid)
+    left outer join dbuser.item as ITBL on (OTBL.itemid = ITBL.itemid)
 ) as ITBL
 group by category
 ","010-Womens
 030-Kids","010-Womens
-030-Kids","PASS"
-"Monthly Sales by Segment","select top 1000001
+030-Kids",PASS
+Monthly Sales by Segment,"select top 1000001
     ""fiscalmonth"",
     ""segment"",
     sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
@@ -3498,10 +3498,10 @@ from
                         ""reportingperiodid"",
                         ""sum_regular_sales_units"",
                         ""sum_markdown_sales_units""
-                    from ""rp"".""sales""
+                    from ""dbuser"".""sales""
                     where ""scenarioid"" =  1 
                 ) as ""OTBL""
-                left outer join ""rp"".""time"" as ""ITBL"" on (""OTBL"".""reportingperiodid"" = ""ITBL"".""reportingperiodid"")
+                left outer join ""dbuser"".""time"" as ""ITBL"" on (""OTBL"".""reportingperiodid"" = ""ITBL"".""reportingperiodid"")
             ) as ""OTBL""
             left outer join 
             (
@@ -3516,19 +3516,19 @@ from
                     select ""locationid"",
                         ""opendate"",
                              year(""opendate"")   as ""C1""
-                    from ""rp"".""store""
+                    from ""dbuser"".""store""
                 ) as ""ITBL""
             ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
         ) as ""ITBL""
         where ""C3"" =  'New Store' 
     ) as ""OTBL""
-    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")
+    left outer join ""dbuser"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")
 ) as ""ITBL""
 group by ""fiscalmonth"",
     ""segment""","Feb
 Mar","Feb
-Mar","PASS"
-"Monthly Sales by Item","select top 1000001
+Mar",PASS
+Monthly Sales by Item,"select top 1000001
     ""fiscalmonth"",
     ""C4"",
     sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",
@@ -3606,10 +3606,10 @@ from
                         ""reportingperiodid"",
                         ""sum_regular_sales_units"",
                         ""sum_markdown_sales_units""
-                    from ""rp"".""sales""
+                    from ""dbuser"".""sales""
                     where ""scenarioid"" =  1 
                 ) as ""OTBL""
-                left outer join ""rp"".""time"" as ""ITBL"" on (""OTBL"".""reportingperiodid"" = ""ITBL"".""reportingperiodid"")
+                left outer join ""dbuser"".""time"" as ""ITBL"" on (""OTBL"".""reportingperiodid"" = ""ITBL"".""reportingperiodid"")
             ) as ""OTBL""
             left outer join 
             (
@@ -3624,18 +3624,70 @@ from
                     select ""locationid"",
                         ""opendate"",
                              year(""opendate"")   as ""C1""
-                    from ""rp"".""store""
+                    from ""dbuser"".""store""
                 ) as ""ITBL""
             ) as ""ITBL"" on (""OTBL"".""locationid"" = ""ITBL"".""locationid"")
         ) as ""ITBL""
         where ""C3"" =  'New Store'
     ) as ""OTBL""
-    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")
+    left outer join ""dbuser"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")
 ) as ""ITBL""
 group by ""fiscalmonth"",
     ""C4""","Feb
 Mar","Feb
-Mar","PASS"
-"Customer/Buyer  Overview","select top 1000001    ""buyer"",    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""from (    select ""OTBL"".""sum_regular_sales_dollars"",        ""OTBL"".""sum_markdown_sales_dollars"",        ""ITBL"".""buyer""    from     (        select ""monthid"",            ""itemid"",            ""locationid"",            ""sum_grossmarginamount"",            ""sum_regular_sales_dollars"",            ""sum_markdown_sales_dollars"",            ""scenarioid"",            ""reportingperiodid"",            ""sum_regular_sales_units"",            ""sum_markdown_sales_units""        from ""rp"".""sales""        where ""scenarioid"" =  1     ) as ""OTBL""    left outer join ""rp"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")) as ""ITBL""group by ""buyer""","Petty  Perry
+Mar",PASS
+Customer/Buyer  Overview,"select top 1000001    ""buyer"",    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""from (    select ""OTBL"".""sum_regular_sales_dollars"",        ""OTBL"".""sum_markdown_sales_dollars"",        ""ITBL"".""buyer""    from     (        select ""monthid"",            ""itemid"",            ""locationid"",            ""sum_grossmarginamount"",            ""sum_regular_sales_dollars"",            ""sum_markdown_sales_dollars"",            ""scenarioid"",            ""reportingperiodid"",            ""sum_regular_sales_units"",            ""sum_markdown_sales_units""        from ""dbuser"".""sales""        where ""scenarioid"" =  1     ) as ""OTBL""    left outer join ""dbuser"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")) as ""ITBL""group by ""buyer""","Petty  Perry
 Gentry  Elizabeth","Petty  Perry
-Gentry  Elizabeth","PASS"
+Gentry  Elizabeth",PASS
+Day,"select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select      day       (""date"")   as ""C1""
+    from ""dbuser"".""finance""
+) as ""ITBL""",5530,5530,PASS
+Quarter,"select sum(     float8(""C1"")               ) as ""C1""from (    select      quarter(""date"")   as ""C1""    from ""dbuser"".""finance"") as ""ITBL""",700,700,PASS
+Month,"select sum(     float8(""C1"")               ) as ""C1""from (    select      month(""date"")   as ""C1""    from ""dbuser"".""finance"") as ""ITBL""",700,700,PASS
+Year,"select sum(     float8(""C1"")               ) as ""C1""from (    select      year(""cob_date"")   as ""C1""    from ""dbuser"".""cob_date"") as ""ITBL""",82738,82738,PASS
+Weeknum,"select sum(     float8(""C1"")               ) as ""C1""from (    select      week(""cob_date"")   as ""C1""    from ""dbuser"".""cob_date"") as ""ITBL""",1040,1040,PASS
+ISBLANK,"select top 501
+    ""C1""
+from 
+(
+    select ""C1"",
+        ""C2"",
+        case
+            when ""C2"" is not null
+            then      float8(     int8(""C2"")                 )               
+            else  0.0000 
+        end as ""C3"",
+        case
+            when ""C2"" is null
+            then  0 
+            else  1 
+        end as ""C4""
+    from 
+    (
+        select ""C1"",
+            ""C1"" as ""C2""
+        from 
+        (
+            select ""date0"",
+                case
+                    when (case
+                        when ""date0"" is null
+                        then  1 
+                        else  0 
+                    end) <>  0 
+                    then  TRUE 
+                    else  FALSE 
+                end as ""C1""
+            from ""dbuser"".""calcs""
+        ) as ""ITBL""
+    ) as ""ITBL""
+    group by ""C1"",
+        ""C2""
+) as ""ITBL""
+order by ""ITBL"".""C3"",
+        ""ITBL"".""C4""","False
+True","False
+True",PASS
