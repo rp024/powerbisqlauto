@@ -2115,3 +2115,54 @@ group by ""fiscalmonth"",
 Mar"
 Customer/Buyer  Overview,"select top 1000001    ""buyer"",    sum(     float8(""sum_markdown_sales_dollars"")               ) as ""C1"",    sum(     float8(""sum_regular_sales_dollars"")               ) as ""C2""from (    select ""OTBL"".""sum_regular_sales_dollars"",        ""OTBL"".""sum_markdown_sales_dollars"",        ""ITBL"".""buyer""    from     (        select ""monthid"",            ""itemid"",            ""locationid"",            ""sum_grossmarginamount"",            ""sum_regular_sales_dollars"",            ""sum_markdown_sales_dollars"",            ""scenarioid"",            ""reportingperiodid"",            ""sum_regular_sales_units"",            ""sum_markdown_sales_units""        from ""dbuser"".""sales""        where ""scenarioid"" =  1     ) as ""OTBL""    left outer join ""dbuser"".""item"" as ""ITBL"" on (""OTBL"".""itemid"" = ""ITBL"".""itemid"")) as ""ITBL""group by ""buyer""","Petty  Perry
 Gentry  Elizabeth"
+Day,"select sum(     float8(""C1"")               ) as ""C1""
+from 
+(
+    select      day       (""date"")   as ""C1""
+    from ""dbuser"".""finance""
+) as ""ITBL""",5530
+Quarter,"select sum(     float8(""C1"")               ) as ""C1""from (    select      quarter(""date"")   as ""C1""    from ""dbuser"".""finance"") as ""ITBL""",700
+Month,"select sum(     float8(""C1"")               ) as ""C1""from (    select      month(""date"")   as ""C1""    from ""dbuser"".""finance"") as ""ITBL""",700
+Year,"select sum(     float8(""C1"")               ) as ""C1""from (    select      year(""cob_date"")   as ""C1""    from ""dbuser"".""cob_date"") as ""ITBL""",82738
+Weeknum,"select sum(     float8(""C1"")               ) as ""C1""from (    select      week(""cob_date"")   as ""C1""    from ""dbuser"".""cob_date"") as ""ITBL""",1040
+ISBLANK,"select top 501
+    ""C1""
+from 
+(
+    select ""C1"",
+        ""C2"",
+        case
+            when ""C2"" is not null
+            then      float8(     int8(""C2"")                 )               
+            else  0.0000 
+        end as ""C3"",
+        case
+            when ""C2"" is null
+            then  0 
+            else  1 
+        end as ""C4""
+    from 
+    (
+        select ""C1"",
+            ""C1"" as ""C2""
+        from 
+        (
+            select ""date0"",
+                case
+                    when (case
+                        when ""date0"" is null
+                        then  1 
+                        else  0 
+                    end) <>  0 
+                    then  TRUE 
+                    else  FALSE 
+                end as ""C1""
+            from ""dbuser"".""calcs""
+        ) as ""ITBL""
+    ) as ""ITBL""
+    group by ""C1"",
+        ""C2""
+) as ""ITBL""
+order by ""ITBL"".""C3"",
+        ""ITBL"".""C4""","False
+True"
