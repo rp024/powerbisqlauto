@@ -30,7 +30,7 @@ from
             else  0.000 
         end))   as ""C1""
     from ""dbuser"".""calcs""
-) as ""ITBL""","92,132.71"
+) as ""ITBL""","92132.71"
 SUMX,"select sum(""C1"") as ""C1""
 from 
 (
@@ -51,7 +51,7 @@ from
     from ""dbuser"".""batters""
 ) as ""ITBL""",-1165976.00
 ALLCROSSFILTER,"select sum(     float8(""book_id"")               ) as ""C1""from ""dbuser"".""risk_table""",54622977014.00
-RELATED,"select sum(     float8(""ab"")               ) as ""C1""from ""dbuser"".""batters""","1,22,63,059.00"
+RELATED,"select sum(     float8(""ab"")               ) as ""C1""from ""dbuser"".""batters""","12263059.00"
 VALUES,"select      float8(count(distinct(""ab"")))                +      float8(max(""C1""))                as ""C1""
 from 
 (
@@ -65,7 +65,7 @@ from
 ) as ""ITBL""",694.00
 ALLSELECTED,"select sum(     float8(""measure"")               ) as ""C1""
 from ""dbuser"".""cob_date""",41.00
-RELATEDTABLE,"select sum(     float8(""games"")               ) as ""C1""from ""dbuser"".""batters""","42,79,701.00"
+RELATEDTABLE,"select sum(     float8(""games"")               ) as ""C1""from ""dbuser"".""batters""","4279701.00"
 ALLNOBLANKROW,"select count( 1 ) as ""C1""
 from ""dbuser"".""cob_date""",41
 DISTINCT(COLUMN),"select      float8(count(distinct(""player"")))                +      float8(max(""C1""))                as ""C1""
@@ -85,10 +85,10 @@ from
     select ""bb""
     from ""dbuser"".""batters""
     where ""league"" in ( 'AL' ,  'NL',  'AA' ,  'UA' ,  'NA' ,  'FL' ,  'PL' )
-) as ""ITBL""","11,27,992.00"
+) as ""ITBL""","1127992.00"
 ALLEXCEPT,"select sum(     float8(""cs"")               ) as ""C1""
 from ""dbuser"".""batters""
-","82,083.00"
+","82083.00"
 FILTER,"select count(""league"") as ""C1""
 from 
 (
@@ -102,7 +102,7 @@ from
     select      length(""team"")   as ""C1""
     from ""dbuser"".""batters""
 ) as ""ITBL""",1380902.00
-VALUE,"select sum(     float8(""C1"")               ) as ""C1""from (    select  65 as ""C1""    from ""dbuser"".""batters"") as ""ITBL""","54,13,460.00"
+VALUE,"select sum(     float8(""C1"")               ) as ""C1""from (    select  65 as ""C1""    from ""dbuser"".""batters"") as ""ITBL""","5413460.00"
 Search,"select sum(     float8(""C1"")               ) as ""C1""
 from 
 (
