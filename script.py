@@ -1,8 +1,11 @@
 import csv
 import logging
 import pyodbc as pdb
+import pandas as pd
+
+
 #create a DSN to avalanche and update connection string
-conn = pdb.connect("dsn=certqa;uid=<>;pwd=<>")
+conn = pdb.connect("dsn=Avalanche;uid=dbuser;pwd=act1an1")
 cursor = conn.cursor()
 
 fp = open(r'Inputsqlfile.csv')
@@ -38,6 +41,12 @@ for row in csv_f:
                 i = 'PASS'
         temp = [col[0], col[1], b, str1.rstrip(), i]
         csv_f2.writerow(temp)
+
+print ("Test Summary")
+print ()
+df = pd.read_csv (r'TestResultssheet.csv')
+Final = df['Results'].value_counts(ascending=True)
+print(Final.to_string())
 
 fp.close()
 fp2.close()
